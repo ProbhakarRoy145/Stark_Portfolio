@@ -1,0 +1,119 @@
+.skills {
+  padding: 6rem 0 4.5rem;
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 0.55rem 1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 14px;
+  transition: border-color 0.35s, background 0.35s, transform 0.35s var(--ease-out-expo);
+}
+
+.skill:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-strong);
+  transform: translateY(-4px);
+}
+
+.skill__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  grid-column: 1 / 2;
+}
+
+.skill__name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.skill__group {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.skill__level {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+}
+
+.skill__bar {
+  grid-column: 1 / -1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill__fill {
+  height: 100%;
+  background: var(--grad-aurora);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(198, 242, 78, 0.55);
+}
+
+/* Marquee */
+.skills__marquee {
+  margin-top: 5rem;
+  overflow: hidden;
+  position: relative;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.skills__track {
+  display: inline-flex;
+  gap: 2rem;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.skills__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  opacity: 0.7;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.skills__tag:hover {
+  opacity: 1;
+}
+
+.skills__tag-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--grad-aurora);
+}
+
+@media (max-width: 640px) {
+  .skills { padding: 5rem 0 4rem; }
+}

@@ -1,0 +1,116 @@
+.experience {
+  padding: 6rem 0;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-left: 3rem;
+}
+
+.timeline__rail {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 14px;
+  width: 2px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.timeline__rail-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--grad-aurora);
+  transform-origin: top;
+  box-shadow: 0 0 12px rgba(198, 242, 78, 0.5);
+}
+
+.timeline__item {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.timeline__dot {
+  position: absolute;
+  top: 12px;
+  left: -3rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-1);
+  display: grid;
+  place-items: center;
+}
+
+.timeline__dot span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--grad-aurora);
+  box-shadow: 0 0 10px var(--accent-violet);
+}
+
+.timeline__card {
+  flex: 1;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 18px;
+  transition: border-color 0.35s, transform 0.35s var(--ease-out-expo);
+}
+
+.timeline__card:hover {
+  border-color: var(--border-strong);
+  transform: translateX(6px);
+}
+
+.timeline__period {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(198, 242, 78, 0.08);
+  border: 1px solid rgba(198, 242, 78, 0.22);
+  margin-bottom: 0.85rem;
+}
+
+.timeline__role {
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.timeline__company {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 0.8rem;
+}
+
+.timeline__desc {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .experience { padding: 5rem 0; }
+  .timeline { padding-left: 2.25rem; }
+  .timeline__dot {
+    left: -2.25rem;
+    width: 24px;
+    height: 24px;
+  }
+  .timeline__rail { left: 11px; }
+}

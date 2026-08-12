@@ -1,0 +1,219 @@
+.certs {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Watermark background */
+.certs__watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.certs__watermark-track {
+  display: flex;
+  gap: 2.5rem;
+  white-space: nowrap;
+  width: max-content;
+  animation: watermark-scroll 60s linear infinite;
+}
+
+.certs__watermark-track--reverse {
+  animation-direction: reverse;
+  animation-duration: 50s;
+}
+
+.certs__watermark-item {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+@keyframes watermark-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.certs .container {
+  position: relative;
+  z-index: 1;
+}
+
+.certs__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ---------- Horizontal scrolling marquee of cards ---------- */
+.cert-marquee {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.cert-marquee__row {
+  overflow: hidden;
+  width: 100%;
+}
+
+.cert-marquee__track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: cert-scroll 60s linear infinite;
+}
+
+.cert-marquee__track--reverse {
+  animation: cert-scroll 70s linear infinite reverse;
+}
+
+.cert-marquee__row:hover .cert-marquee__track {
+  animation-play-state: paused;
+}
+
+.cert-marquee .cert {
+  flex: 0 0 320px;
+  min-height: 240px;
+}
+
+@keyframes cert-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.cert {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.4rem;
+  min-height: 280px;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.01));
+  border-radius: 18px;
+  overflow: hidden;
+  color: inherit;
+  isolation: isolate;
+  transition: border-color 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+}
+
+.cert:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+}
+
+/* Embedded PDF sits behind content, dim by default, brightens on hover */
+.cert__pdf {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #fff;
+  opacity: 0.18;
+  filter: saturate(0.6);
+  transition: opacity 0.5s var(--ease-out-expo), filter 0.5s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.cert:hover .cert__pdf {
+  opacity: 1;
+  filter: saturate(1);
+}
+
+.cert__pdf-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  pointer-events: none;
+}
+
+/* Foreground text — fades out on hover so the certificate is fully visible */
+.cert__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  height: 100%;
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+
+.cert:hover .cert__content {
+  opacity: 0;
+}
+
+.cert__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cert__index {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+}
+
+.cert__tag {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.cert__title {
+  margin-top: auto;
+  font-size: 1.2rem;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.cert__issuer {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-mute);
+}
+
+.cert__shine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 100% 0%, rgba(255, 194, 75, 0.18), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out-expo);
+  pointer-events: none;
+}
+
+.cert:hover .cert__shine {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .certs { padding: 5rem 0; }
+  .cert { min-height: 240px; }
+}
